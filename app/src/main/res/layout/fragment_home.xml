@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_home"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/wall3"
+                app:layout_constraintEnd_toEndOf="@+id/wall3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place1"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="60dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place2"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/place1"
+                app:layout_constraintTop_toTopOf="@+id/place1" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place3"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/place2"
+                app:layout_constraintTop_toTopOf="@+id/place2" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place4"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintStart_toStartOf="@+id/place1"
+                app:layout_constraintTop_toBottomOf="@+id/place1" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place5"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/place3"
+                app:layout_constraintTop_toTopOf="@+id/place4" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place6"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintStart_toStartOf="@+id/place4"
+                app:layout_constraintTop_toBottomOf="@+id/place4" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place7"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintStart_toStartOf="@+id/place3"
+                app:layout_constraintTop_toBottomOf="@+id/place4" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place8"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintStart_toStartOf="@+id/place5"
+                app:layout_constraintTop_toBottomOf="@+id/place4" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place9"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="45dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/place6"
+                app:layout_constraintTop_toBottomOf="@+id/place6" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place10"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/place9"
+                app:layout_constraintTop_toTopOf="@+id/place9" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place11"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="60dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/place8"
+                app:layout_constraintTop_toBottomOf="@+id/place10" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place12"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/place8"
+                app:layout_constraintTop_toBottomOf="@+id/place11" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place13"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/place1"
+                app:layout_constraintTop_toBottomOf="@+id/place11" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place14"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/place11" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place15"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/place14" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place16"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/place15"
+                app:layout_constraintTop_toBottomOf="@+id/place15" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/place17"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:visibility="gone"
+                app:cardCornerRadius="8dp"
+                app:contentPadding="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/place13"
+                app:layout_constraintTop_toBottomOf="@+id/place15" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wall1"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                app:cardBackgroundColor="#F4F4F4"
+                app:cardElevation="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/place11"
+                app:layout_constraintEnd_toEndOf="@+id/place6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/place10" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wall2"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="40dp"
+                app:cardBackgroundColor="#F4F4F4"
+                app:cardElevation="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/place11"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/wall1"
+                app:layout_constraintTop_toBottomOf="@+id/place10" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wall3"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="5dp"
+                app:cardBackgroundColor="#F4F4F4"
+                app:cardElevation="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/place2"
+                app:layout_constraintEnd_toEndOf="@+id/wall1"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wall4"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="40dp"
+                app:cardBackgroundColor="#F4F4F4"
+                app:cardElevation="1dp"
+                app:layout_constraintBottom_toBottomOf="@+id/wall3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/wall1"
+                app:layout_constraintTop_toTopOf="@+id/wall3" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wall5"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="40dp"
+                app:cardBackgroundColor="#F4F4F4"
+                app:cardElevation="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/wc1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/wall1"
+                app:layout_constraintTop_toTopOf="@+id/place4" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wc1"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                app:cardElevation="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/wall2"
+                app:layout_constraintEnd_toEndOf="parent" >
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/bathroomfemale" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/wc2"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                app:cardElevation="1dp"
+                app:layout_constraintBottom_toTopOf="@+id/wall4"
+                app:layout_constraintEnd_toEndOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="20dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/bathroommen" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+   
+</androidx.constraintlayout.widget.ConstraintLayout>

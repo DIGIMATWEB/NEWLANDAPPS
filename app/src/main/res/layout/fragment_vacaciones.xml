@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F6F4F4"
+    tools:context=".ui.vacaciones.vacacionesFragment">
+
+    <!--<Button
+        android:id="@+id/btnSeleccionarRango"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar rango de fechas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRangoFechas" />
+
+    <TextView
+        android:id="@+id/txtRangoFechas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="Fechas seleccionadas aparecerán aquí"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="NEW LAND APPS, S.A DE C.V."
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="SOLICITUD DE VACACIONES"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Fecha de solicitud: "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+            <TextView
+                android:id="@+id/textViewNC"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Nombre del Colaborador: "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewNC"
+                app:layout_constraintTop_toTopOf="@+id/textViewNC" />
+
+            <TextView
+                android:id="@+id/textViewC"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Cargo /Puesto que desempeña: "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNC" />
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewC"
+                app:layout_constraintTop_toTopOf="@+id/textViewC" />
+
+            <TextView
+                android:id="@+id/textViewA"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Area / Departamento: "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewC" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewA"
+                app:layout_constraintTop_toTopOf="@+id/textViewA" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="0dp"
+        android:layout_height="290dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewI"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Fecha de ingreso: "
+                android:textSize="11dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editText8"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewI"
+                app:layout_constraintTop_toTopOf="@+id/textViewI" />
+
+            <TextView
+                android:id="@+id/textViewP"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:textSize="11dp"
+                android:text="Vacaciones correspondientes al período: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewI" />
+
+            <EditText
+                android:id="@+id/editText9"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewP"
+                app:layout_constraintTop_toTopOf="@+id/textViewP" />
+
+            <TextView
+                android:id="@+id/textViewVC"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:textSize="11dp"
+                android:text="Dias correspondientes : "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewP" />
+
+            <EditText
+                android:id="@+id/editText10"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                app:layout_constraintStart_toEndOf="@+id/textViewVC"
+                app:layout_constraintTop_toTopOf="@+id/textViewVC" />
+
+            <TextView
+                android:id="@+id/textViewSPG"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Saldo por gozar : "
+                android:textSize="11dp"
+                app:layout_constraintStart_toEndOf="@+id/editText10"
+                app:layout_constraintTop_toBottomOf="@+id/textViewP" />
+
+            <EditText
+                android:id="@+id/editText11"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewSPG"
+                app:layout_constraintTop_toTopOf="@+id/textViewVC" />
+
+            <TextView
+                android:id="@+id/textViewTTX"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Por medio de la presente, solicito me sea(n) autorizado(s) : "
+                android:textSize="11dp"
+                app:layout_constraintStart_toStartOf="@+id/textViewVC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewVC" />
+
+            <EditText
+                android:id="@+id/editText12"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/textViewTTX"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTTX" />
+
+            <TextView
+                android:id="@+id/textViewDD"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="día(s) a cuenta de mis vacaciones, para ser gozadas:"
+                android:textSize="11dp"
+                app:layout_constraintStart_toEndOf="@+id/editText12"
+                app:layout_constraintTop_toTopOf="@+id/editText12" />
+
+            <EditText
+                android:id="@+id/editTextdtzP"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/textViewTTX"
+                app:layout_constraintTop_toBottomOf="@+id/editText12" />
+
+            <TextView
+                android:id="@+id/textViewdl"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:text=" al "
+                android:textSize="11dp"
+                app:layout_constraintEnd_toStartOf="@+id/editTextdtzP2"
+                app:layout_constraintStart_toEndOf="@+id/editTextdtzP"
+                app:layout_constraintTop_toTopOf="@+id/editTextdtzP" />
+            <EditText
+                android:id="@+id/editTextdtzP2"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextdtzP"
+                app:layout_constraintTop_toBottomOf="@+id/editText12" />
+
+            <TextView
+                android:id="@+id/textViewdAño"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:text=" 2025 "
+                android:textSize="11dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextdtzP2"
+                app:layout_constraintTop_toTopOf="@+id/editTextdtzP2" />
+
+            <TextView
+                android:id="@+id/textViewTF"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Entiendo que "
+                android:textSize="11dp"
+                app:layout_constraintStart_toStartOf="@+id/editTextdtzP"
+                app:layout_constraintTop_toBottomOf="@+id/editTextdtzP" />
+
+            <TextView
+                android:id="@+id/textViewTF2"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:text="DEBO REANUDAR MIS LABORES "
+                android:textStyle="bold"
+                android:textSize="11dp"
+                app:layout_constraintStart_toEndOf="@+id/textViewTF"
+                app:layout_constraintTop_toBottomOf="@+id/editTextdtzP" />
+
+            <TextView
+                android:id="@+id/textViewTF3"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:text=" el"
+                android:textSize="11dp"
+                app:layout_constraintStart_toEndOf="@+id/textViewTF2"
+                app:layout_constraintTop_toBottomOf="@+id/editTextdtzP" />
+
+            <EditText
+                android:id="@+id/editTextdtzP3"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewTF3"
+                app:layout_constraintTop_toTopOf="@+id/textViewTF3" />
+
+            <TextView
+                android:id="@+id/textViewTFC"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Firma del colaborador "
+                android:textSize="11dp"
+                app:layout_constraintStart_toStartOf="@+id/textViewTF"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTF" />
+
+            <EditText
+                android:id="@+id/editTextdtzP4"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                app:layout_constraintStart_toEndOf="@+id/textViewTFC"
+                app:layout_constraintTop_toTopOf="@+id/textViewTFC" />
+
+            <TextView
+                android:id="@+id/textViewTFJ"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Vo. Bo. Jefe Inmediato: "
+                android:textSize="11dp"
+                app:layout_constraintStart_toStartOf="@+id/textViewTFC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTFC" />
+
+            <EditText
+                android:id="@+id/editTextdtzP5"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                app:layout_constraintStart_toEndOf="@+id/textViewTFC"
+                app:layout_constraintTop_toTopOf="@+id/textViewTFJ" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewTRH1"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Autorizado: "
+                android:textSize="11dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textViewTRH2"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                android:text=" No. Autorizado: "
+                android:textSize="11dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextdtzP6"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textViewTFJ3"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="Vo. Bo. de Recursos Humanos: "
+                android:textSize="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/editTextdtzP6"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                app:layout_constraintStart_toEndOf="@+id/textViewTRH1"
+                app:layout_constraintTop_toTopOf="@+id/textViewTRH1" />
+
+            <EditText
+                android:id="@+id/editTextdtzP7"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                app:layout_constraintStart_toEndOf="@+id/textViewTRH2"
+                app:layout_constraintTop_toTopOf="@+id/textViewTRH1" />
+
+            <EditText
+                android:id="@+id/editTextdtzP8"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewTFJ3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTRH1" />
+
+            <EditText
+                android:id="@+id/editTextdtzP9"
+                android:layout_width="0dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewTFJ3"
+                app:layout_constraintTop_toTopOf="@+id/textViewTFJ3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
