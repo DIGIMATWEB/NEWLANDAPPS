@@ -1,6 +1,7 @@
 package com.NewLandApps.NewlandApps;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,12 +9,17 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.NewLandApps.NewlandApps.Dialogs.view.SecureCode;
 import com.NewLandApps.NewlandApps.Dialogs.view.progressDialog;
+import com.NewLandApps.NewlandApps.Login.view.LoginContainer;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -30,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-
+    private GoogleSignInClient mSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +44,22 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mSignInClient = GoogleSignIn.getClient(this, gso);
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+        binding.closeSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                revoke();
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
@@ -69,7 +84,32 @@ public class MainActivity extends AppCompatActivity {
         }
         setUpBar();
     }
-
+    private void revoke() {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferences.edit();
+        editor.clear();
+        editor.apply();
+        mSignInClient.revokeAccess().addOnCompleteListener(this, task -> {
+            if (task.isSuccessful()) {
+                clearLocalData();
+                Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+                navigateToLoginScreen();
+            } else {
+                Toast.makeText(getApplicationContext(), "Failed to revoke access", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void navigateToLoginScreen() {
+        Intent intent = new Intent(this, LoginContainer.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+    private void clearLocalData() {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear(); // Clears all saved data
+        editor.apply();
+    }
     private void codigoVerificacion() {
         SecureCode dialog = new SecureCode();
         dialog.show(getSupportFragmentManager(), "SecureCode");
