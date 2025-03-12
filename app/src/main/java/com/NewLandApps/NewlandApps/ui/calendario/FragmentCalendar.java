@@ -1,5 +1,6 @@
 package com.NewLandApps.NewlandApps.ui.calendario;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,36 +15,59 @@ import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.databinding.FragmentCalendarBinding;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 
 public class FragmentCalendar extends Fragment {
-    private FragmentCalendarBinding binding;
     private CalendarView calendarView;
     private Button btnSelectYear;
     private HashSet<Long> highlightedDates;
     private Calendar calendar;
+    private RecyclerView rvCalendar;
+    private adapterCalendar adapterFreedates;
+    private List<String> puenteFechas = new ArrayList<>();
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentCalendarBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        View root = inflater.inflate(R.layout.fragment_calendar, container, false);
 
-        calendarView = binding.calendarView;
-        btnSelectYear = binding.btnSelectYear;
+        calendarView = root.findViewById(R.id.calendarView);
+        btnSelectYear = root.findViewById(R.id.btnSelectYear);
+        rvCalendar =root.findViewById(R.id.rvCalendar);
         calendar = Calendar.getInstance();
 
         // Configurar fechas a resaltar
         highlightedDates = new HashSet<>();
-        highlightedDates.add(getTimeInMillis(2025, 2, 10)); // 10 de marzo de 2025
-        highlightedDates.add(getTimeInMillis(2025, 5, 15)); // 15 de junio de 2025
-
+        highlightedDates.add(getTimeInMillis(2025, 0, 1));   // Año Nuevo (1 de enero)
+        highlightedDates.add(getTimeInMillis(2025, 1, 2));   // Día de la Constitución (2 de febrero)
+        highlightedDates.add(getTimeInMillis(2025, 2, 17));  // Natalicio de Benito Juárez (17 de marzo)
+        highlightedDates.add(getTimeInMillis(2025, 3, 17));  // Lunes de la Semana Santa
+        highlightedDates.add(getTimeInMillis(2025, 4, 1));   // Día del Trabajo (1 de mayo)
+        highlightedDates.add(getTimeInMillis(2025, 4, 18));  // Viernes Santo (18 de abril)
+        highlightedDates.add(getTimeInMillis(2025, 8, 16));  // Día de la Independencia (16 de septiembre)
+        highlightedDates.add(getTimeInMillis(2025, 10, 20)); // Día de la Revolución Mexicana (20 de noviembre)
+        highlightedDates.add(getTimeInMillis(2025, 11, 25)); // 15 de junio de 2025
+        puenteFechas.add("01 01 25: Año Nuevo");
+        puenteFechas.add("02 02 25: Día de la Constitución");
+        puenteFechas.add("17 03 25: Natalicio de Benito Juárez");
+        puenteFechas.add("17 04 25: Lunes de la Semana Santa");
+        puenteFechas.add("01 05 25: Día del Trabajo");
+        puenteFechas.add("18 05 25: Viernes Santo");
+        puenteFechas.add("16 09 25: Día de la Independencia");
+        puenteFechas.add("20 11 25: Día de la Revolución Mexicana");
+        puenteFechas.add("25 12 25: Navidad");
         // Configurar selección de fecha
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             long selectedDate = getTimeInMillis(year, month, dayOfMonth);
@@ -53,71 +77,29 @@ public class FragmentCalendar extends Fragment {
                 Toast.makeText(getContext(), "Fecha seleccionada: " + dayOfMonth + "/" + (month + 1) + "/" + year, Toast.LENGTH_SHORT).show();
             }
         });
-        // Botón para seleccionar el año
-        btnSelectYear.setOnClickListener(v ->showDateRangePicker()); //showYearPicker());
 
+        // Botón para seleccionar el año
+        btnSelectYear.setVisibility(View.GONE);
+        btnSelectYear.setOnClickListener(v -> showDateRangePicker());
+        fillAdapter();
         return root;
     }
 
-    // Método para mostrar el selector de año
-    private void showYearPicker() {
-        int currentYear = calendar.get(Calendar.YEAR);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                getContext(),
-                (view, year, month, dayOfMonth) -> {
-                    calendar.set(year, Calendar.JANUARY, 1);
-                    calendarView.setDate(calendar.getTimeInMillis()); // Cambia el año en el calendario
-                },
-                currentYear, Calendar.JANUARY, 1
-        );
-
-        DatePicker datePicker = datePickerDialog.getDatePicker();
-
-        // Ocultar día y mes si existen
-        View dayView = datePicker.findViewById(getResources().getIdentifier("day", "id", "android"));
-        if (dayView != null) {
-            dayView.setVisibility(View.GONE);
-        }
-
-        View monthView = datePicker.findViewById(getResources().getIdentifier("month", "id", "android"));
-        if (monthView != null) {
-            monthView.setVisibility(View.GONE);
-        }
-
-        datePickerDialog.show();
+    private void fillAdapter() {
+        rvCalendar.setNestedScrollingEnabled(false);
+        adapterFreedates  = new adapterCalendar(puenteFechas,getContext());
+//        adapterFreedates.setOnClickDateListener(UnitMapViewImplV3.this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rvCalendar.setLayoutManager(layoutManager);
+        rvCalendar.setAdapter(adapterFreedates);
     }
 
-
-    // Método para convertir año, mes y día en milisegundos
     private long getTimeInMillis(int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day, 0, 0, 0);
         return calendar.getTimeInMillis();
     }
-    private void showMonthPicker() {
-        CalendarConstraints.Builder constraintsBuilder = new CalendarConstraints.Builder()
-                .setValidator(DateValidatorPointForward.now());
 
-        MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder
-                .datePicker()
-                .setTitleText("Selecciona una fecha")
-                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                .setCalendarConstraints(constraintsBuilder.build())
-                .build();
-
-        datePicker.addOnPositiveButtonClickListener(selection -> {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(selection);
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH) + 1;
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-            Toast.makeText(getContext(), "Fecha seleccionada: " + day + "/" + month + "/" + year, Toast.LENGTH_SHORT).show();
-        });
-
-        datePicker.show(getParentFragmentManager(), "MONTH_PICKER");
-    }
     private void showDateRangePicker() {
         MaterialDatePicker<Pair<Long, Long>> dateRangePicker =
                 MaterialDatePicker.Builder.dateRangePicker()
@@ -149,11 +131,5 @@ public class FragmentCalendar extends Fragment {
         });
 
         dateRangePicker.show(getParentFragmentManager(), "DATE_RANGE_PICKER");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
     }
 }
