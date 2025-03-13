@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView5"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingBottom="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:elevation="5dp"
+        android:textColor="@color/black_overlay"
+        android:text="Month"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView5"
+        app:layout_constraintStart_toStartOf="@+id/cardView5"
+        app:layout_constraintTop_toTopOf="@+id/cardView5" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="50dp" />
+    <Spinner
+        android:id="@+id/spinnerMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:tooltipText="null"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView5"
+        app:layout_constraintEnd_toEndOf="@+id/cardView5"
+        app:layout_constraintTop_toTopOf="@+id/cardView5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPeopleOnMonth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView5" />
+
+    <View
+        android:id="@+id/spaceView"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

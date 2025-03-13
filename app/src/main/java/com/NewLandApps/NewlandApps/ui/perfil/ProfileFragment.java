@@ -20,7 +20,6 @@ import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.databinding.FragmentGalleryBinding;
 import com.NewLandApps.NewlandApps.databinding.FragmentProfileBinding;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
-import com.NewLandApps.NewlandApps.ui.gallery.GalleryViewModel;
 
 public class ProfileFragment extends Fragment {
 

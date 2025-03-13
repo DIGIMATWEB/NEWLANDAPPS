@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.nav_profile || destination.getId() == R.id.nav_home|| destination.getId() == R.id.nav_calendario) {
+            if (destination.getId() == R.id.nav_profile || destination.getId() == R.id.nav_home|| destination.getId() == R.id.nav_calendario||destination.getId()==R.id.nav_gallery) {
                 binding.appBarMain.fab.setVisibility(View.GONE); // Oculta el botón
             } else {
                 binding.appBarMain.fab.setVisibility(View.VISIBLE); // Muestra el botón en otros casos
