@@ -71,9 +71,19 @@ public class ProfileFragment extends Fragment {
     }
 
     private void setUpRole(String seleccion) {
+        String role="";
+        if(seleccion.equals("Administracion")){
+            role="1";
+        }else if(seleccion.equals( "Usuario")) {
+            role="2";
+        }else if(seleccion.equals("RH")){
+            role="3";
+        }else if(seleccion.equals("Developer")){
+            role="4";
+        }
         SharedPreferences preferencias=getContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=preferencias.edit();
-        editor.putString(GeneralConstantsV2.ROLE_USER, seleccion);
+        editor.putString(GeneralConstantsV2.ROLE_USER, role);
         editor.commit();
     }
 }

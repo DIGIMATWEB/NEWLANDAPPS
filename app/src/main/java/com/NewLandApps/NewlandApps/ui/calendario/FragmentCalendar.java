@@ -34,8 +34,9 @@ public class FragmentCalendar extends Fragment {
     private Button btnSelectYear;
     private HashSet<Long> highlightedDates;
     private Calendar calendar;
-    private RecyclerView rvCalendar;
+    private RecyclerView rvCalendar,rvVacations;
     private adapterCalendar adapterFreedates;
+    private adapterVacations adapterVacations;
     private List<String> puenteFechas = new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
@@ -46,6 +47,7 @@ public class FragmentCalendar extends Fragment {
         calendarView = root.findViewById(R.id.calendarView);
         btnSelectYear = root.findViewById(R.id.btnSelectYear);
         rvCalendar =root.findViewById(R.id.rvCalendar);
+        rvVacations =root.findViewById(R.id.rvVacations);
         calendar = Calendar.getInstance();
 
         // Configurar fechas a resaltar
@@ -82,7 +84,15 @@ public class FragmentCalendar extends Fragment {
         btnSelectYear.setVisibility(View.GONE);
         btnSelectYear.setOnClickListener(v -> showDateRangePicker());
         fillAdapter();
+        fillVacations();
         return root;
+    }
+
+    private void fillVacations() {
+        adapterVacations=new adapterVacations(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rvVacations.setLayoutManager(layoutManager);
+        rvVacations.setAdapter(adapterVacations);
     }
 
     private void fillAdapter() {

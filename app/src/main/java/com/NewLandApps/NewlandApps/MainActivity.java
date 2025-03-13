@@ -74,6 +74,22 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.nav_profile || destination.getId() == R.id.nav_home|| destination.getId() == R.id.nav_calendario) {
+                binding.appBarMain.fab.setVisibility(View.GONE); // Oculta el botón
+            } else {
+                binding.appBarMain.fab.setVisibility(View.VISIBLE); // Muestra el botón en otros casos
+            }
+        });
+
+        // Acción para el FloatingActionButton
+        binding.appBarMain.fab.setOnClickListener(view ->
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()
+        );
+
+
         Menu menu = navigationView.getMenu();
         MenuItem galleryItem = menu.findItem(R.id.nav_gallery);
         //galleryItem.setVisible(false);
