@@ -54,6 +54,7 @@ public class GeneralConstantsV2 {
     public static final String DELAYLATLONG = "15000";
     public static final String USERID = "ID_GOOGLE";
     public static final String VERIFICATIONCODE = "13";
+    public static final String ROLE_USER = "10";
     public static boolean VEHICLES_LIST_VISIBLE = true;
     public static boolean VEHICLES_LIST_NOT_VISIBLE = false;
 

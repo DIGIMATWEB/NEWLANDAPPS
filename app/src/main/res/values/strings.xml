@@ -56,4 +56,10 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="toketea"></string>
+
+    <string-array name="example_array">
+        <item>Role 1</item>
+        <item>Role 2</item>
+        <item>Role 3</item>
+    </string-array>
 </resources>
