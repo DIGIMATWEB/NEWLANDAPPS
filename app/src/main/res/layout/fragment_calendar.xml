@@ -1,80 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.calendario.FragmentCalendar"
     >
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView5"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:tooltipText="Dias de asueto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Dias oficiales"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/titleOfficialdates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Dias oficiales"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCalendar"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView5" />
+        app:layout_constraintTop_toBottomOf="@+id/titleOfficialdates" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView6"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
+    <TextView
+        android:id="@+id/titleVacations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
-        android:tooltipText="Dias de asueto"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Vacaciones"
+        android:textSize="12dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvCalendar">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Vacaciones"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/rvCalendar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvVacations"
@@ -84,16 +56,35 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView6" />
+        app:layout_constraintTop_toBottomOf="@+id/titleVacations" />
+
+    <TextView
+        android:id="@+id/SumaryVacations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7 dias restantes"
+        android:textSize="7dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/rvVacations"
+        app:layout_constraintTop_toTopOf="@+id/titleVacations" />
+
+            <TextView
+                android:id="@+id/SumaryVacationsExpiration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expiran 02/Jul/2025"
+                android:textSize="7dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/rvVacations"
+                app:layout_constraintTop_toBottomOf="@+id/SumaryVacations" />
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvVacations" />
 
     <Button
         android:id="@+id/btnSelectYear"
@@ -104,4 +95,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

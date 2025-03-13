@@ -70,7 +70,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place1"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="100dp"
                 android:layout_marginEnd="60dp"
@@ -79,9 +79,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toTopOf="@+id/wall5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ruta" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/place2"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="8dp"
@@ -91,7 +98,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place3"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="8dp"
@@ -101,7 +108,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place4"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 app:cardCornerRadius="8dp"
@@ -111,7 +118,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place5"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="8dp"
@@ -121,7 +128,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place6"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="8dp"
@@ -131,7 +138,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place7"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="8dp"
@@ -141,7 +148,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place8"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="8dp"
@@ -151,7 +158,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place9"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="45dp"
@@ -162,7 +169,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place10"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="5dp"
                 app:cardCornerRadius="8dp"
@@ -172,7 +179,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place11"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="60dp"
                 app:cardCornerRadius="8dp"
@@ -182,7 +189,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place12"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="8dp"
@@ -192,7 +199,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place13"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="8dp"
@@ -203,7 +210,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/place14"
                 android:layout_width="50dp"
-                android:layout_height="70dp"
+                android:layout_height="60dp"
                 android:visibility="gone"
                 app:cardCornerRadius="8dp"
                 app:contentPadding="8dp"
@@ -213,7 +220,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/place15"
                 android:layout_width="50dp"
-                android:layout_height="70dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="5dp"
                 android:visibility="gone"
                 app:cardCornerRadius="8dp"
@@ -223,7 +230,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place16"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:visibility="gone"
                 app:cardCornerRadius="8dp"
@@ -233,7 +240,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/place17"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="50dp"
                 android:visibility="gone"
                 app:cardCornerRadius="8dp"
