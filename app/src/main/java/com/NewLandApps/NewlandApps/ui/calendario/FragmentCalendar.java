@@ -55,7 +55,7 @@ public class FragmentCalendar extends Fragment {
         highlightedDates.add(getTimeInMillis(2025, 0, 1));   // Año Nuevo (1 de enero)
         highlightedDates.add(getTimeInMillis(2025, 1, 2));   // Día de la Constitución (2 de febrero)
         highlightedDates.add(getTimeInMillis(2025, 2, 17));  // Natalicio de Benito Juárez (17 de marzo)
-        highlightedDates.add(getTimeInMillis(2025, 3, 17));  // Lunes de la Semana Santa
+       // highlightedDates.add(getTimeInMillis(2025, 3, 17));  // Lunes de la Semana Santa
         highlightedDates.add(getTimeInMillis(2025, 4, 1));   // Día del Trabajo (1 de mayo)
         highlightedDates.add(getTimeInMillis(2025, 4, 18));  // Viernes Santo (18 de abril)
         highlightedDates.add(getTimeInMillis(2025, 8, 16));  // Día de la Independencia (16 de septiembre)
@@ -64,7 +64,7 @@ public class FragmentCalendar extends Fragment {
         puenteFechas.add("01 01 25: Año Nuevo");
         puenteFechas.add("02 02 25: Día de la Constitución");
         puenteFechas.add("17 03 25: Natalicio de Benito Juárez");
-        puenteFechas.add("17 04 25: Lunes de la Semana Santa");
+       // puenteFechas.add("17 04 25: Lunes de la Semana Santa");
         puenteFechas.add("01 05 25: Día del Trabajo");
         puenteFechas.add("18 05 25: Viernes Santo");
         puenteFechas.add("16 09 25: Día de la Independencia");
