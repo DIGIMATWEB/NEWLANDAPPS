@@ -88,7 +88,7 @@ public class FragmentCalendar extends Fragment {
         return root;
     }
 
-    private void fillVacations() {
+    private void fillVacations  () {
         adapterVacations=new adapterVacations(getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rvVacations.setLayoutManager(layoutManager);
@@ -112,7 +112,7 @@ public class FragmentCalendar extends Fragment {
 
     private void showDateRangePicker() {
         MaterialDatePicker<Pair<Long, Long>> dateRangePicker =
-                MaterialDatePicker.Builder.dateRangePicker()
+                MaterialDatePicker.Builder.dateRangePicker() 
                         .setTitleText("Selecciona un rango de fechas")
                         .setSelection(new Pair<>(MaterialDatePicker.thisMonthInUtcMilliseconds(),
                                 MaterialDatePicker.todayInUtcMilliseconds()))
