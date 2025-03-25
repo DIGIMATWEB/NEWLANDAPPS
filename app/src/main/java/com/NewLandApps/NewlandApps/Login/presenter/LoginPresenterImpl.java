@@ -51,4 +51,11 @@ public class LoginPresenterImpl implements  LoginPresenter{
             view.showLoader();
         }
     }
+
+    @Override
+    public void setUser() {
+        if(view!=null){
+            interactor.setUser();
+        }
+    }
 }

@@ -11,4 +11,6 @@ public interface LoginPresenter {
     void hideDialog();
 
     void showDialog();
+
+    void setUser();
 }

@@ -45,6 +45,11 @@ public class LoginInteractorImpl implements LoginInteractor {
         }
     }
 
+    @Override
+    public void setUser() {
+
+    }
+
     private void requestokLogin(String user, String pass) {
         LoginRequestV2 request= new LoginRequestV2(user,pass);
         presenter.showDialog();
