@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import com.NewLandApps.NewlandApps.BuildConfig;
 //import com.NewLandApps.NewlandApps.Dialogs.RepartidorRegister.keyRegister;
-import com.NewLandApps.NewlandApps.MainActivity;
+import com.NewLandApps.NewlandApps.MainUI.MainActivity;
 import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.Login.presenter.LoginPresenter;
 import com.NewLandApps.NewlandApps.Login.presenter.LoginPresenterImpl;

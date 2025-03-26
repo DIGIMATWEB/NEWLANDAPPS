@@ -1,0 +1,5 @@
+package com.NewLandApps.NewlandApps.ui.perfil.view;
+
+public interface profileView {
+    void setUpRole();
+}

@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.NewLandApps.NewlandApps.Login.view.LoginContainer;
-import com.NewLandApps.NewlandApps.MainActivity;
+import com.NewLandApps.NewlandApps.MainUI.MainActivity;
 import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
 import com.bumptech.glide.Glide;

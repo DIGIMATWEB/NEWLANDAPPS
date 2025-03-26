@@ -1,4 +1,4 @@
-package com.NewLandApps.NewlandApps.ui.perfil;
+package com.NewLandApps.NewlandApps.ui.perfil.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -11,25 +11,27 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.NewLandApps.NewlandApps.MainUI.MainActivity;
 import com.NewLandApps.NewlandApps.R;
-import com.NewLandApps.NewlandApps.databinding.FragmentGalleryBinding;
-import com.NewLandApps.NewlandApps.databinding.FragmentProfileBinding;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
+import com.NewLandApps.NewlandApps.ui.perfil.presenter.presenterProfile;
+import com.NewLandApps.NewlandApps.ui.perfil.presenter.presenterProfileInterface;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements profileView{
 
     private TextView textGallery;
     private Spinner spinner;
     private ImageView profilePic;
     private TextView textName,textViewCharge,textViewEmail;
+    private MainActivity menuView;
+    private presenterProfileInterface presenter;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -42,6 +44,7 @@ public class ProfileFragment extends Fragment {
         // Simulación de un ViewModel (descomentar si tienes GalleryViewModel)
         // GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         // galleryViewModel.getText().observe(getViewLifecycleOwner(), textGallery::setText);
+        menuView=(MainActivity) getContext();
         initView(view);
         return view;
     }
@@ -89,6 +92,7 @@ public class ProfileFragment extends Fragment {
                         .error(R.drawable.ic_launcher_foreground)       // Fallback if load fails
                         .centerCrop())                                  // Crop image to fill
                 .into(profilePic);
+        presenter=new presenterProfile(this,getContext());
     }
 
     private void setUpRole(String seleccion) {
@@ -106,5 +110,10 @@ public class ProfileFragment extends Fragment {
         SharedPreferences.Editor editor=preferencias.edit();
         editor.putString(GeneralConstantsV2.ROLE_USER, role);
         editor.commit();
+    }
+
+    @Override
+    public void setUpRole() {
+
     }
 }

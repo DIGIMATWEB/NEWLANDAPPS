@@ -1,4 +1,4 @@
-package com.NewLandApps.NewlandApps;
+package com.NewLandApps.NewlandApps.MainUI;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.NewLandApps.NewlandApps.Dialogs.view.SecureCode;
-import com.NewLandApps.NewlandApps.Dialogs.view.progressDialog;
 import com.NewLandApps.NewlandApps.Login.view.LoginContainer;
+import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
