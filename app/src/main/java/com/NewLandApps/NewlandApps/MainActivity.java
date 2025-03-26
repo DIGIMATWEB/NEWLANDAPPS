@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {//TODO este es el colapsing floating button
             if (destination.getId() == R.id.nav_profile || destination.getId() == R.id.nav_home|| destination.getId() == R.id.nav_calendario||destination.getId()==R.id.nav_gallery) {
                 binding.appBarMain.fab.setVisibility(View.GONE); // Oculta el botón
             } else {
@@ -90,15 +90,17 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
+
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        String verifiationCode = preferences.getString(GeneralConstantsV2.VERIFICATIONCODE, null);
+//        if(verifiationCode==null) {
+//            codigoVerificacion();
+//        }
         Menu menu = navigationView.getMenu();
         MenuItem galleryItem = menu.findItem(R.id.nav_gallery);
         //galleryItem.setVisible(false);
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
-        String verifiationCode = preferences.getString(GeneralConstantsV2.VERIFICATIONCODE, null);
-        if(verifiationCode==null) {
-            codigoVerificacion();
-        }
         setUpBar();
+        navController.navigate(R.id.nav_profile);
     }
     private void revoke() {
         SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);

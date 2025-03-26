@@ -7,6 +7,7 @@ public class RetrofitEndPointsV2 {
     public static final String URL_T_API ="https://maps.googleapis.com/";
     public static final String URL_OPEN_CHARGERS="https://api.openchargemap.io/v3/";
     public static final String LOGINV2 = "";
+    public static final String LOGINV3 = "NEWLANDAPPS/loginNewland.php";
     public static final String GET_SPLASHDATAV2= "";
     public static final String GET_PARAMETERS = " ";
 }

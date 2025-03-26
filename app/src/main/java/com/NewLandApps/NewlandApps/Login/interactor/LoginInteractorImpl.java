@@ -7,12 +7,16 @@ import android.widget.Toast;
 
 import com.NewLandApps.NewlandApps.Login.model.LoginRequestV2;
 import com.NewLandApps.NewlandApps.Login.model.LoginResponseV2;
+import com.NewLandApps.NewlandApps.Login.model.SetUpUser.requestSetUpUser;
+import com.NewLandApps.NewlandApps.Login.model.SetUpUser.responseSetupUser;
 import com.NewLandApps.NewlandApps.Login.model.UserDataV2;
 import com.NewLandApps.NewlandApps.Login.presenter.LoginPresenter;
 import com.NewLandApps.NewlandApps.Login.utils.LoginServicesV2;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
 import com.NewLandApps.NewlandApps.retrofit.RetrofitClientV3;
 import com.NewLandApps.NewlandApps.retrofit.RetrofitValidationsV2;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,6 +55,57 @@ public class LoginInteractorImpl implements LoginInteractor {
         String name = preferences.getString(GeneralConstantsV2.USER_PREFERENCES, null);
         String urlLogo = preferences.getString(GeneralConstantsV2.URL_USER_IMAGE_PREFERENCES, null);
         String email = preferences.getString(GeneralConstantsV2.EMAIL_PREFERENCES, null);
+        seUpUser(name,urlLogo,email);
+    }
+
+    private void seUpUser(String name, String urlLogo, String email) {
+        requestSetUpUser request=new requestSetUpUser(name,urlLogo,email);
+        presenter.showDialog();
+        Call<responseSetupUser> call=service.loginv3(request);
+        call.enqueue(new Callback<responseSetupUser>() {
+            @Override
+            public void onResponse(Call<responseSetupUser> call, Response<responseSetupUser> response) {
+                validationCodeLoginv3(response,context);
+            }
+
+            @Override
+            public void onFailure(Call<responseSetupUser> call, Throwable t) {
+                presenter.hideDialog();
+            }
+        });
+
+    }
+
+    private void validationCodeLoginv3(Response<responseSetupUser> response, Context context) {
+        if (response != null) {
+            if (RetrofitValidationsV2.checkSuccessCode(response.code())) {
+                loginresponsev3Data(response,context);
+            }else {
+                // Toast.makeText(context, "" + RetrofitValidationsV2.getErrorByStatus(response.code(), context), Toast.LENGTH_SHORT).show();
+                presenter.hideDialog();
+            }
+        }
+    }
+
+    private void loginresponsev3Data(Response<responseSetupUser> response, Context context) {
+        responseSetupUser myresponse=response.body();
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        String json=gson.toJson(myresponse);
+        Log.e("loginresponsev3Data",""+json);
+                if(myresponse!=null) {
+                    String code = myresponse.getResponseCode();
+                    String message = myresponse.getMessage();
+                    if (code != null) {
+                        if (code.equals("105")) {
+                            presenter.hideDialog();
+                            presenter.succes();
+                        }
+                    }else{
+                        presenter.hideDialog();
+                    }
+                }else{
+                    presenter.hideDialog();
+                }
     }
 
     private void requestokLogin(String user, String pass) {
