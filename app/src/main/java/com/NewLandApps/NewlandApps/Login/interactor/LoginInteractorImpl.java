@@ -95,8 +95,13 @@ public class LoginInteractorImpl implements LoginInteractor {
                 if(myresponse!=null) {
                     String code = myresponse.getResponseCode();
                     String message = myresponse.getMessage();
+
                     if (code != null) {
                         if (code.equals("105")) {
+                            SharedPreferences preferencias=context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES,Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor=preferencias.edit();
+                            editor.putString(GeneralConstantsV2.ROLE_USER, myresponse.getUserRole() );
+                            editor.commit();
                             presenter.hideDialog();
                             presenter.succes();
                         }

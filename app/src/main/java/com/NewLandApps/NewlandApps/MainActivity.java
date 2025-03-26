@@ -89,16 +89,32 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show()
         );
 
+        Menu menu = navigationView.getMenu();
+        MenuItem OficinaItem = menu.findItem(R.id.nav_home);
+        MenuItem VacacionesItem = menu.findItem(R.id.nav_vacaciones);
+        MenuItem CalendarioItem = menu.findItem(R.id.nav_calendario);
+        MenuItem CumpleañosItem = menu.findItem(R.id.nav_gallery);
+        MenuItem NotificacionesItem = menu.findItem(R.id.nav_slideshow);
+        MenuItem ProfileItem = menu.findItem(R.id.nav_profile);
 
+        //R.id.nav_profile,R.id.nav_vacaciones,R.id.nav_calendario,
+        //                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
 
         SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         String verifiationCode = preferences.getString(GeneralConstantsV2.VERIFICATIONCODE, null);
+        String userRole= preferences.getString(GeneralConstantsV2.ROLE_USER, null);
 //        if(verifiationCode==null) {
 //            codigoVerificacion();
 //        }
-        Menu menu = navigationView.getMenu();
-        MenuItem galleryItem = menu.findItem(R.id.nav_gallery);
-        //galleryItem.setVisible(false);
+        if(userRole==null||userRole.equals("")){
+            OficinaItem.setVisible(false);
+            VacacionesItem.setVisible(false);
+            CalendarioItem.setVisible(false);
+            CumpleañosItem.setVisible(false);
+            NotificacionesItem.setVisible(false);
+        }
+
+
         setUpBar();
         navController.navigate(R.id.nav_profile);
     }
