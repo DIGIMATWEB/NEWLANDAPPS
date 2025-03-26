@@ -47,7 +47,10 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     @Override
     public void setUser() {
-
+        SharedPreferences preferences = context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        String name = preferences.getString(GeneralConstantsV2.USER_PREFERENCES, null);
+        String urlLogo = preferences.getString(GeneralConstantsV2.URL_USER_IMAGE_PREFERENCES, null);
+        String email = preferences.getString(GeneralConstantsV2.EMAIL_PREFERENCES, null);
     }
 
     private void requestokLogin(String user, String pass) {

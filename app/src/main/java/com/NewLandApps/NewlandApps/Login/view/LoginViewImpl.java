@@ -203,8 +203,8 @@ public class LoginViewImpl extends Fragment implements View.OnClickListener, Log
                         editor.putString(GeneralConstantsV2.CLOSE_SESSION_PREFERENCES, "NO");
 
                         editor.commit();
-                       // presenter.setUser();
-                      presenter.succes();
+                      presenter.setUser();
+                      //presenter.succes();
                     } else {
                         // Sign in failed, handle failure and update UI
                         // ...

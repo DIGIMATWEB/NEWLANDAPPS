@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,11 +21,15 @@ import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.databinding.FragmentGalleryBinding;
 import com.NewLandApps.NewlandApps.databinding.FragmentProfileBinding;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 public class ProfileFragment extends Fragment {
 
     private TextView textGallery;
     private Spinner spinner;
+    private ImageView profilePic;
+    private TextView textName,textViewCharge,textViewEmail;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,6 +48,9 @@ public class ProfileFragment extends Fragment {
 
     private void initView(View view) {
         spinner = view.findViewById(R.id.spinnerExample);
+        profilePic= view.findViewById(R.id. profilePic);
+        textName= view.findViewById(R.id.textName);
+        textViewEmail= view.findViewById(R.id. textViewEmail);
         // Datos para el Spinner
         String[] opciones = {"Administracion", "Usuario", "RH","Developer"};
 
@@ -67,6 +75,20 @@ public class ProfileFragment extends Fragment {
                 // Acción cuando no se selecciona nada (opcional)
             }
         });
+
+        SharedPreferences preferences = getContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        String urlLogo = preferences.getString(GeneralConstantsV2.URL_USER_IMAGE_PREFERENCES, null);
+        String name = preferences.getString(GeneralConstantsV2.USER_PREFERENCES, null);
+        String email = preferences.getString(GeneralConstantsV2.EMAIL_PREFERENCES, null);
+        textName.setText(name);
+        textViewEmail.setText(email);
+        Glide.with(this)
+                .load(urlLogo)
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.ic_launcher_foreground)  // Placeholder while loading
+                        .error(R.drawable.ic_launcher_foreground)       // Fallback if load fails
+                        .centerCrop())                                  // Crop image to fill
+                .into(profilePic);
     }
 
     private void setUpRole(String seleccion) {
