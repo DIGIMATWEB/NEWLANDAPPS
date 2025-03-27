@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         String role = preferences.getString(GeneralConstantsV2.ROLE_USER, null);
         Log.e("ROLE","userRole: "+role);
         if(role!=null){
-            if(role.equals("1")||role.equals("4")){
+            if(role.equals("1")||role.equals("3")||role.equals("4")){//TODO admin,rh, developer
                 userManagement.setVisibility(View.VISIBLE);
             }else{
                 userManagement.setVisibility(View.GONE);

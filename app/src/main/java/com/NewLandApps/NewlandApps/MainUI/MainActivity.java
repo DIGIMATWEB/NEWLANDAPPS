@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             NotificacionesItem.setVisible(true);
             ProfileItem.setVisible(true);
         }else if(userRole.equals("2")){//TODO usuario
-            OficinaItem.setVisible(true);
+            OficinaItem.setVisible(false);
             VacacionesItem.setVisible(true);
             CalendarioItem.setVisible(true);
             CumpleañosItem.setVisible(true);

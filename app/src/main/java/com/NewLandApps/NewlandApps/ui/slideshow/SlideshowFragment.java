@@ -10,28 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.databinding.FragmentSlideshowBinding;
 
 public class SlideshowFragment extends Fragment {
 
-    private FragmentSlideshowBinding binding;
+    private TextView textSlideshow;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         SlideshowViewModel slideshowViewModel =
                 new ViewModelProvider(this).get(SlideshowViewModel.class);
 
-        binding = FragmentSlideshowBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        textSlideshow = root.findViewById(R.id.text_slideshow);
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textSlideshow::setText);
         return root;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
     }
 }

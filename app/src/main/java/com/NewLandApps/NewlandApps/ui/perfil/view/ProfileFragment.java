@@ -62,27 +62,13 @@ public class ProfileFragment extends Fragment implements profileView{
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 // Asignar adaptador al Spinner
-        spinner.setAdapter(adapter);
 
-// Manejar selección de ítems
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String seleccion = opciones[position];
-               // Toast.makeText(getContext(), "Seleccionaste: " + seleccion, Toast.LENGTH_SHORT).show();
-                setUpRole(seleccion);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // Acción cuando no se selecciona nada (opcional)
-            }
-        });
 
         SharedPreferences preferences = getContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
         String urlLogo = preferences.getString(GeneralConstantsV2.URL_USER_IMAGE_PREFERENCES, null);
         String name = preferences.getString(GeneralConstantsV2.USER_PREFERENCES, null);
         String email = preferences.getString(GeneralConstantsV2.EMAIL_PREFERENCES, null);
+        String role = preferences.getString(GeneralConstantsV2.ROLE_USER,null);
         textName.setText(name);
         textViewEmail.setText(email);
         Glide.with(this)
@@ -94,6 +80,25 @@ public class ProfileFragment extends Fragment implements profileView{
                 .into(profilePic);
         presenter=new presenterProfile(this,getContext());
         presenter.updateRole(email);
+        spinner.setAdapter(adapter);
+
+        if(role.equals("2")&&!email.equals("newlandappscontact@gmail.com")){
+            spinner.setVisibility(View.GONE);
+        }
+// Manejar selección de ítems
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String seleccion = opciones[position];
+                // Toast.makeText(getContext(), "Seleccionaste: " + seleccion, Toast.LENGTH_SHORT).show();
+                setUpRole(seleccion);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Acción cuando no se selecciona nada (opcional)
+            }
+        });
 
     }
 
@@ -112,6 +117,7 @@ public class ProfileFragment extends Fragment implements profileView{
         SharedPreferences.Editor editor=preferencias.edit();
         editor.putString(GeneralConstantsV2.ROLE_USER, role);
         editor.commit();
+        menuView.updateRole();
     }
 
     @Override
