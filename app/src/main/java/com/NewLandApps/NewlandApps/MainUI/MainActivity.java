@@ -112,11 +112,12 @@ public class MainActivity extends AppCompatActivity {
             CalendarioItem.setVisible(false);
             CumpleañosItem.setVisible(false);
             NotificacionesItem.setVisible(false);
+            navController.navigate(R.id.nav_profile);
         }
 
 
         setUpBar();
-        navController.navigate(R.id.nav_profile);
+       //
     }
     private void revoke() {
         SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
@@ -183,5 +184,72 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void updateRole() {
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
+        String userRole = preferences.getString(GeneralConstantsV2.ROLE_USER, null);
+
+        Menu menu = binding.navView.getMenu();
+        MenuItem OficinaItem = menu.findItem(R.id.nav_home);
+        MenuItem VacacionesItem = menu.findItem(R.id.nav_vacaciones);
+        MenuItem CalendarioItem = menu.findItem(R.id.nav_calendario);
+        MenuItem CumpleañosItem = menu.findItem(R.id.nav_gallery);
+        MenuItem NotificacionesItem = menu.findItem(R.id.nav_slideshow);
+        MenuItem ProfileItem = menu.findItem(R.id.nav_profile);
+
+        boolean isUserRoleValid = userRole != null && !userRole.isEmpty();
+
+        OficinaItem.setVisible(isUserRoleValid);
+        VacacionesItem.setVisible(isUserRoleValid);
+        CalendarioItem.setVisible(isUserRoleValid);
+        CumpleañosItem.setVisible(isUserRoleValid);
+        NotificacionesItem.setVisible(isUserRoleValid);
+        if(userRole==null||userRole.equals("")||userRole.equals("0")){
+            OficinaItem.setVisible(false);
+            VacacionesItem.setVisible(false);
+            CalendarioItem.setVisible(false);
+            CumpleañosItem.setVisible(false);
+            NotificacionesItem.setVisible(false);
+            ProfileItem.setVisible(true);
+        }else if(userRole.equals("1")){//TODO Administrador
+            OficinaItem.setVisible(true);
+            VacacionesItem.setVisible(true);
+            CalendarioItem.setVisible(true);
+            CumpleañosItem.setVisible(true);
+            NotificacionesItem.setVisible(true);
+            ProfileItem.setVisible(true);
+        }else if(userRole.equals("2")){//TODO usuario
+            OficinaItem.setVisible(true);
+            VacacionesItem.setVisible(true);
+            CalendarioItem.setVisible(true);
+            CumpleañosItem.setVisible(true);
+            NotificacionesItem.setVisible(true);
+            ProfileItem.setVisible(true);
+        }else if(userRole.equals("3")){ //TODO RH
+            OficinaItem.setVisible(true);
+            VacacionesItem.setVisible(true);
+            CalendarioItem.setVisible(true);
+            CumpleañosItem.setVisible(true);
+            NotificacionesItem.setVisible(true);
+            ProfileItem.setVisible(true);
+        }else if(userRole.equals("4")){ //TODO developer
+            OficinaItem.setVisible(true);
+            VacacionesItem.setVisible(true);
+            CalendarioItem.setVisible(true);
+            CumpleañosItem.setVisible(true);
+            NotificacionesItem.setVisible(true);
+            ProfileItem.setVisible(true);
+        }
+        //String role="";
+        //        if(seleccion.equals("Administracion")){
+        //            role="1";
+        //        }else if(seleccion.equals( "Usuario")) {
+        //            role="2";
+        //        }else if(seleccion.equals("RH")){
+        //            role="3";
+        //        }else if(seleccion.equals("Developer")){
+        //            role="4";
+        //        }
     }
 }

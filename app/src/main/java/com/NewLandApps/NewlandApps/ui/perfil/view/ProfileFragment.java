@@ -93,6 +93,8 @@ public class ProfileFragment extends Fragment implements profileView{
                         .centerCrop())                                  // Crop image to fill
                 .into(profilePic);
         presenter=new presenterProfile(this,getContext());
+        presenter.updateRole(email);
+
     }
 
     private void setUpRole(String seleccion) {
@@ -114,6 +116,16 @@ public class ProfileFragment extends Fragment implements profileView{
 
     @Override
     public void setUpRole() {
+        menuView.updateRole();
+    }
+
+    @Override
+    public void hideProgressDialog() {
+
+    }
+
+    @Override
+    public void showProgresDialog() {
 
     }
 }

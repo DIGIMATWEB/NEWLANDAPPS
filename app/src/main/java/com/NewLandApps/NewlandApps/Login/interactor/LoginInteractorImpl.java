@@ -11,7 +11,7 @@ import com.NewLandApps.NewlandApps.Login.model.SetUpUser.requestSetUpUser;
 import com.NewLandApps.NewlandApps.Login.model.SetUpUser.responseSetupUser;
 import com.NewLandApps.NewlandApps.Login.model.UserDataV2;
 import com.NewLandApps.NewlandApps.Login.presenter.LoginPresenter;
-import com.NewLandApps.NewlandApps.Login.utils.LoginServicesV2;
+import com.NewLandApps.NewlandApps.retrofit.LoginServicesV2;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
 import com.NewLandApps.NewlandApps.retrofit.RetrofitClientV3;
 import com.NewLandApps.NewlandApps.retrofit.RetrofitValidationsV2;
