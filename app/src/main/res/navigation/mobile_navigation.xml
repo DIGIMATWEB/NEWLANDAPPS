@@ -6,7 +6,7 @@
     app:startDestination="@+id/nav_home">
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.NewLandApps.NewlandApps.ui.home.HomeFragment"
+        android:name="com.NewLandApps.NewlandApps.ui.home.view.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 

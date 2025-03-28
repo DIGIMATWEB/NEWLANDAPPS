@@ -1,8 +1,7 @@
-package com.NewLandApps.NewlandApps.ui.home;
+package com.NewLandApps.NewlandApps.ui.home.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.ui.calendario.adapterCalendar;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class adapterPartners extends RecyclerView.Adapter<adapterCalendar.ViewHolder> {
 

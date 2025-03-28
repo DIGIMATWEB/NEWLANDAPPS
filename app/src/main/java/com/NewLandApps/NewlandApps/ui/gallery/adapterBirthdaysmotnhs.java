@@ -10,13 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.NewLandApps.NewlandApps.R;
-import com.NewLandApps.NewlandApps.ui.calendario.adapterCalendar;
-import com.NewLandApps.NewlandApps.ui.home.adapterPartners;
 
 public class adapterBirthdaysmotnhs extends RecyclerView.Adapter<adapterBirthdaysmotnhs.ViewHolder> {
 
