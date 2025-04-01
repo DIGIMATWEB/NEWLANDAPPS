@@ -58,7 +58,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,homeF
         presenter=new presenterHomeFragmentImpl(this,getContext());
         presenter.getUsers();
         fillAdapter();
-    }
+    } 
 
     private void fillAdapter() {
         rvParthners.setNestedScrollingEnabled(false);
