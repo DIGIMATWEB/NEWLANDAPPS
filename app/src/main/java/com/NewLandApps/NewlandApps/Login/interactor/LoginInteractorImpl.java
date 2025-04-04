@@ -11,7 +11,7 @@ import com.NewLandApps.NewlandApps.Login.model.SetUpUser.requestSetUpUser;
 import com.NewLandApps.NewlandApps.Login.model.SetUpUser.responseSetupUser;
 import com.NewLandApps.NewlandApps.Login.model.UserDataV2;
 import com.NewLandApps.NewlandApps.Login.presenter.LoginPresenter;
-import com.NewLandApps.NewlandApps.retrofit.LoginServicesV2;
+import com.NewLandApps.NewlandApps.retrofit.serviceDigimat;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
 import com.NewLandApps.NewlandApps.retrofit.RetrofitClientV3;
 import com.NewLandApps.NewlandApps.retrofit.RetrofitValidationsV2;
@@ -27,13 +27,13 @@ public class LoginInteractorImpl implements LoginInteractor {
     private Context context;
     private LoginPresenter presenter;
     private Retrofit retrofitClient;
-    private LoginServicesV2 service;
+    private serviceDigimat service;
     public LoginInteractorImpl(LoginPresenter presenter,Context context)
     {
         this.presenter=presenter;
         this.context=context;
         retrofitClient = RetrofitClientV3.getRetrofitInstancev3();
-        service = retrofitClient.create(LoginServicesV2.class);
+        service = retrofitClient.create(serviceDigimat.class);
     }
 
 
@@ -62,6 +62,9 @@ public class LoginInteractorImpl implements LoginInteractor {
         requestSetUpUser request=new requestSetUpUser(name,urlLogo,email);
         presenter.showDialog();
         Call<responseSetupUser> call=service.loginv3(request);
+        Gson gson=new GsonBuilder().setPrettyPrinting().create();
+        String json=gson.toJson(request);
+        Log.e("requestLogin",""+json);
         call.enqueue(new Callback<responseSetupUser>() {
             @Override
             public void onResponse(Call<responseSetupUser> call, Response<responseSetupUser> response) {

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
-import com.NewLandApps.NewlandApps.retrofit.LoginServicesV2;
+import com.NewLandApps.NewlandApps.retrofit.serviceDigimat;
 import com.NewLandApps.NewlandApps.retrofit.RetrofitClientV3;
 import com.NewLandApps.NewlandApps.retrofit.RetrofitValidationsV2;
 import com.NewLandApps.NewlandApps.ui.perfil.model.requestGetRole;
@@ -23,12 +23,12 @@ public class interactorProfile implements interactorProfileInterface{
     private presenterProfileInterface presenter;
     private Context context;
       private Retrofit retrofitClient;
-        private LoginServicesV2 service;
+        private serviceDigimat service;
     public interactorProfile(presenterProfileInterface presenter, Context context) {
         this.context=context;
         this.presenter=presenter;
         retrofitClient = RetrofitClientV3.getRetrofitInstancev3();
-        service = retrofitClient.create(LoginServicesV2.class);
+        service = retrofitClient.create(serviceDigimat.class);
     }
 
     @Override
@@ -69,6 +69,7 @@ public class interactorProfile implements interactorProfileInterface{
                             String code = myresponse.getResponseCode();
                             String message = myresponse.getStatus();
 
+
                             if (code != null) {
                                 if (code.equals("105")) {
                                     SharedPreferences preferencias=context.getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES,Context.MODE_PRIVATE);
@@ -76,6 +77,7 @@ public class interactorProfile implements interactorProfileInterface{
                                     editor.putString(GeneralConstantsV2.ROLE_USER, myresponse.getUserRole() );
                                     editor.commit();
                                     presenter.hideDialog();
+                                    presenter.succesGetRole();
                                 }
                             }else{
                                 presenter.hideDialog();

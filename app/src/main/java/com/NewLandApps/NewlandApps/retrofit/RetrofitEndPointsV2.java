@@ -11,4 +11,5 @@ public class RetrofitEndPointsV2 {
     public static final String GET_SPLASHDATAV2= "";
     public static final String GET_PARAMETERS = " ";
     public static final String GET_ROLE = "NEWLANDAPPS/getUserRole.php";
+    public static final String GET_USERS ="NEWLANDAPPS/getUsers.php" ;
 }

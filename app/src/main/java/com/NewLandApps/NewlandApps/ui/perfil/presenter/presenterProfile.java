@@ -39,4 +39,12 @@ public class presenterProfile implements  presenterProfileInterface{
             view.showProgresDialog();
         }
     }
+
+    @Override
+    public void succesGetRole() {
+        if(view!=null)
+        {
+            view.succesGetRole();
+        }
+    }
 }

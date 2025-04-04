@@ -11,14 +11,21 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
 import com.NewLandApps.NewlandApps.ui.home.adapter.adapterPartners;
+import com.NewLandApps.NewlandApps.ui.home.model.User;
 import com.NewLandApps.NewlandApps.ui.home.presenter.presenterHomeFragment;
 import com.NewLandApps.NewlandApps.ui.home.presenter.presenterHomeFragmentImpl;
+import com.NewLandApps.NewlandApps.ui.perfil.view.ProfileAdminEditor;
+
+import java.io.Serializable;
+import java.util.List;
 
 public class HomeFragment extends Fragment implements View.OnClickListener,homeFragmentView {
 
@@ -26,6 +33,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener,homeF
     private adapterPartners adapter;
     private RecyclerView rvParthners;
     private presenterHomeFragment presenter;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+    private ProfileAdminEditor profileEditor;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 //        HomeViewModel homeViewModel =
@@ -35,6 +45,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,homeF
        // textHome = view.findViewById(R.id.textHome);
 
        // homeViewModel.getText().observe(getViewLifecycleOwner(), textHome::setText);
+
         initView(view);
         return view;
     }
@@ -57,12 +68,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener,homeF
         }
         presenter=new presenterHomeFragmentImpl(this,getContext());
         presenter.getUsers();
-        fillAdapter();
-    } 
 
-    private void fillAdapter() {
+    }
+
+    private void fillAdapter(List<User> usuarios) {
         rvParthners.setNestedScrollingEnabled(false);
-        adapter  = new adapterPartners(getContext());
+        adapter  = new adapterPartners(this,usuarios,getContext());
 //        adapterFreedates.setOnClickDateListener(UnitMapViewImplV3.this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rvParthners.setLayoutManager(layoutManager);
@@ -72,5 +83,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener,homeF
     @Override
     public void onClick(View view) {
 
+    }
+
+    @Override
+    public void setUsers(List<User> usuarios) {
+        fillAdapter(usuarios);
+    }
+
+    public void editUser(User user) {
+        manager = getActivity().getSupportFragmentManager();
+        transaction = manager.beginTransaction();
+        ProfileAdminEditor profileEditor = new ProfileAdminEditor();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("user", (Serializable) user);
+        profileEditor.setArguments(bundle);
+
+        transaction.replace(R.id.nav_host_fragment_content_main, profileEditor, ProfileAdminEditor.TAG)
+                .addToBackStack(null)  // Add to back stack
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .commit();
     }
 }

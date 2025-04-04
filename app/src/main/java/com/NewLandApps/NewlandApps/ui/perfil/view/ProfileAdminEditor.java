@@ -18,33 +18,35 @@ import androidx.fragment.app.Fragment;
 import com.NewLandApps.NewlandApps.MainUI.MainActivity;
 import com.NewLandApps.NewlandApps.R;
 import com.NewLandApps.NewlandApps.retrofit.GeneralConstantsV2;
+import com.NewLandApps.NewlandApps.ui.home.model.User;
 import com.NewLandApps.NewlandApps.ui.perfil.presenter.presenterProfile;
 import com.NewLandApps.NewlandApps.ui.perfil.presenter.presenterProfileInterface;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-public class ProfileFragment extends Fragment implements profileView{
-
+public class ProfileAdminEditor extends Fragment implements profileView{
+    public static final String TAG = ProfileAdminEditor.class.getSimpleName();
     private TextView textGallery;
     private Spinner spinner;
     private ImageView profilePic;
     private TextView textName,textViewCharge,textViewEmail;
     private MainActivity menuView;
     private presenterProfileInterface presenter;
-
+    private User user;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_editor, container, false);
 
         // Inicializar vistas con findViewById
         //textGallery = root.findViewById(R.id.textGallery);
-
+        user= (User) getArguments().getSerializable("user");
         // Simulación de un ViewModel (descomentar si tienes GalleryViewModel)
         // GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         // galleryViewModel.getText().observe(getViewLifecycleOwner(), textGallery::setText);
         menuView=(MainActivity) getContext();
+
         initView(view);
         return view;
     }
@@ -65,24 +67,22 @@ public class ProfileFragment extends Fragment implements profileView{
 
 
         SharedPreferences preferences = getContext().getSharedPreferences(GeneralConstantsV2.CREDENTIALS_PREFERENCES, Context.MODE_PRIVATE);
-        String urlLogo = preferences.getString(GeneralConstantsV2.URL_USER_IMAGE_PREFERENCES, null);
-        String name = preferences.getString(GeneralConstantsV2.USER_PREFERENCES, null);
-        String email = preferences.getString(GeneralConstantsV2.EMAIL_PREFERENCES, null);
+
         String role = preferences.getString(GeneralConstantsV2.ROLE_USER,null);
-        textName.setText(name);
-        textViewEmail.setText(email);
+        textName.setText(user.getNameUser());
+        textViewEmail.setText(user.getCorreoUsuario());
         Glide.with(this)
-                .load(urlLogo)
+                .load(user.getPhotoUser())
                 .apply(new RequestOptions()
                         .placeholder(R.drawable.ic_launcher_foreground)  // Placeholder while loading
                         .error(R.drawable.ic_launcher_foreground)       // Fallback if load fails
                         .centerCrop())                                  // Crop image to fill
                 .into(profilePic);
         presenter=new presenterProfile(this,getContext());
-        presenter.updateRole(email);
+        presenter.updateRole(user.getCorreoUsuario());
         spinner.setAdapter(adapter);
         if(role!=null) {
-            if (role.equals("2") && !email.equals("newlandappscontact@gmail.com")) {
+            if (role.equals("2") && !user.getCorreoUsuario().equals("newlandappscontact@gmail.com")) {
                 spinner.setVisibility(View.GONE);
             }
         }
@@ -138,6 +138,7 @@ public class ProfileFragment extends Fragment implements profileView{
 
     @Override
     public void succesGetRole() {
-        menuView.updateRole();
+
     }
+
 }

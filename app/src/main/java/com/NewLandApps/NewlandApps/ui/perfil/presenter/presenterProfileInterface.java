@@ -5,4 +5,6 @@ public interface presenterProfileInterface {
 
     void hideDialog();
     void showProgresDialog();
+
+    void succesGetRole();
 }

@@ -6,4 +6,6 @@ public interface profileView {
     void hideProgressDialog();
 
     void showProgresDialog();
+
+    void succesGetRole();
 }

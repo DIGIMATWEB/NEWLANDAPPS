@@ -23,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -78,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {//TODO este es el colapsing floating button
             if (destination.getId() == R.id.nav_profile || destination.getId() == R.id.nav_home|| destination.getId() == R.id.nav_calendario||destination.getId()==R.id.nav_gallery) {
                 binding.appBarMain.fab.setVisibility(View.GONE); // Oculta el botón
+                if(destination.getId() ==R.id.nav_home){
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    if (fragmentManager.getBackStackEntryCount() > 0) {
+                        fragmentManager.popBackStack(); // Remove the top fragment
+                    }
+                }
             } else {
                 binding.appBarMain.fab.setVisibility(View.VISIBLE); // Muestra el botón en otros casos
             }
@@ -171,6 +178,15 @@ public class MainActivity extends AppCompatActivity {
         TextView nameText=headerView.findViewById(R.id.nameUser);
         nameText.setText(name);
         emailText.setText(email);
+    }
+    @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStack(); // Remove the top fragment
+        } else {
+            super.onBackPressed(); // Default behavior
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
