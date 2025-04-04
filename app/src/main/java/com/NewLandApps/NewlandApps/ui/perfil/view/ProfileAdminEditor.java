@@ -140,5 +140,38 @@ public class ProfileAdminEditor extends Fragment implements profileView{
     public void succesGetRole() {
 
     }
+    private void removethisFragment(){
+        requireActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .remove(ProfileAdminEditor.this)
+                .commit();
+    }
 
+    @Override
+    public void onPause() {
+
+        super.onPause();
+    }
+    @Override
+    public void onDestroyView() {
+        removethisFragment();
+        super.onDestroyView();
+
+        // Cleanup views, stop listeners, etc.
+    }
+
+    @Override
+    public void onDestroy() {
+        removethisFragment();
+        super.onDestroy();
+        // Final cleanup, releasing resources, etc.
+    }
+
+    @Override
+    public void onDetach() {
+        removethisFragment();
+        super.onDetach();
+        // Fragment is detached from the activity
+    }
 }
